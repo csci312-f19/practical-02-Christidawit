@@ -7,7 +7,7 @@
     "test": "jest",
     "lint": "eslint ."
   },
-  "author": "",
+  "author": "Christian Woldemdhin <cwoldemdhin@middlebury.edu>",
   "contributors": [
     "Christopher Andrews <candrews@middlebury.edu>",
     "Michael Linderman <mlinderman@middlebury.edu>"
