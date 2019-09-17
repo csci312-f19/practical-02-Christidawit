@@ -20,7 +20,7 @@ const createSlider = function createSlider(color, initialValue, callback) {
   // create a div to hold the color name and add it to the slider
     const label = document.createElement('div');
     label.className = `color-label`;
-    label.innerHTML(`${color}:`);
+    label.innerHTML = `${color}:`;
     slider.appendChild(label);
     
     
@@ -61,14 +61,18 @@ whenever the value of the color changes.
 */
 const createColorPicker = function createColorPicker(initialValue, callback) { // eslint-disable-line no-unused-vars, max-len
   // create a div to hold the picker
-  
-
+    const picker = document.createElement('div');
+    picker.className = `color-picker`;
+    
   // create a div with the class 'color-swatch' to provide the colored rectangle
   // and add it to the picker
+    const colorBox = document.createElement('div');
+    colorBox.className = `color-swatch`;
+    picker.appendChild(colorBox);
   
 
   // create a local variable to hold the current color and initialize it with initialValue
-  
+    let currentColor = initialValue;
 
   // create an update function that takes in an object of the form {color: value}
   // this should:
