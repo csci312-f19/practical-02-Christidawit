@@ -26,27 +26,9 @@
     </div>
 
     <script type="text/javascript">
-      const colorBox = document.querySelector('.color-swatch');
-      
-      const picker = document.querySelector('.color-picker');
       let currentColor = {'red':255, 'green':0, 'blue': 0};
-      
-      const update = function(newColor) {
-        currentColor = { ...currentColor, ...newColor }
-        const { red, green, blue } = currentColor;
-          
-        colorBox.style.background = `rgb(${red}, ${green}, ${blue})`;
-      };
-    
-        Object.keys(currentColor).forEach((color) =>{
-        // initialize slider in here
-          const tempSlider = createSlider(color, currentColor[color], update);
-          picker.appendChild(tempSlider);
-        });
-    
-
-      // Set oninput callback for each slider
-      update();
+      const picker = createColorPicker(currentColor, (value) => console.log(value));
+      picker.appendChild(document.body);
     </script>
 
   </body>
