@@ -34,7 +34,7 @@ const createSlider = function createSlider(color, initialValue, callback) {
 
   // create the readout to display the current value and add it to the slider
     const readout = document.createElement('span');
-    readout.value = initialValue;
+    readout.innerHTML = initialValue;
     slider.appendChild(readout);
   // set the range input's oninput function to update the readout and call the callback
     range.oninput = () => {
@@ -79,16 +79,27 @@ const createColorPicker = function createColorPicker(initialValue, callback) { /
   // - merge the change into the the current color
   // - set the background color of the swatch
   // - call the callback with the current color
+    const update = function(newColor) {
+        currentColor = { ...currentColor, ...newColor }
+        const { red, green, blue } = currentColor;
+        
+        colorBox.style.background = `rgb(${red}, ${green}, ${blue})`;
+        callback(currentColor);
+    };
   
 
   // add sliders for each color channel
-  
+    Object.keys(currentColor).forEach((color) =>{
+           // initialize slider in here
+          const tempSlider = createSlider(color, currentColor[color], update);
+          picker.appendChild(tempSlider);
+    });
 
   // call update() to initialize to the correct value
-  
+    update();
 
   // return the picker
-  
+    return picker;
 };
 
 try {
